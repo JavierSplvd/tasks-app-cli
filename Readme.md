@@ -2,10 +2,10 @@
 
 Using Powershell:
 
-'''
+```
 > .venv\scripts\activate
 (venv) >
-'''
+```
 
 # User stories
 
@@ -17,6 +17,6 @@ Using Powershell:
 
 # Run tests
 
-'''
+```
 python -m unittest discover -s "./src" -t "./src"
-'''
+```

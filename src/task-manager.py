@@ -9,6 +9,24 @@ from usecases.update_task import update_task
 
 @click.group()
 def cli():
+    """This CLI is a simple task manager. The items are stored in a CSV file on the current directory. A list of commands is available below.
+
+    \b
+    List tasks:
+    task-manager.py ls
+
+    \b
+    Add task:
+    task-manager.py add "title" "description" "1999-12-31"
+
+    \b
+    Update task:
+    task-manager.py update "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd" "TTT" "DDD" "True" "1999-12-31"
+
+    \b
+    Delete task:
+    task-manager.py delete "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd"
+    """
     pass
 
 
