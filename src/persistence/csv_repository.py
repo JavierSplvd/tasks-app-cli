@@ -5,23 +5,48 @@ from entities.task import Task
 # This class uses the Singleton pattern.
 class CsvRepository:
     __instance = None
+    csv_filename: str = "tasks.csv"
 
     @staticmethod
     def get_instance():
         if CsvRepository.__instance is None:
             CsvRepository.__instance = CsvRepository()
+            try:
+                with open(CsvRepository.csv_filename, mode="w", newline="") as file:
+                    csv.writer(file)
+                    print("CSV created!")
+            except Exception as e:
+                print(f"An error occurred while creating the CSV: {str(e)}")
         return CsvRepository.__instance
 
-    def task_exists(self, id: str, csv_filename: str) -> bool:
-        tasks = self.read_tasks(csv_filename)
+    def task_exists(self, id: str) -> bool:
+        tasks = self.read_tasks()
         for task in tasks:
             if task.id == id:
                 return True
         return False
 
-    def read_tasks(self, csv_filename: str) -> list[Task]:
+    def create_task(self, task: Task):
+        try:
+            with open(CsvRepository.csv_filename, mode="a", newline="") as file:
+                writer = csv.writer(file)
+                writer.writerow(
+                    [
+                        task.id,
+                        task.title,
+                        task.description,
+                        task.completed,
+                        task.due_date,
+                    ]
+                )
+            print("Task created!")
+            print(str(task))
+        except Exception as e:
+            print(f"An error occurred while saving the task to CSV: {str(e)}")
+
+    def read_tasks(self) -> list[Task]:
         tasks: list[Task] = []
-        with open(csv_filename, mode="r") as file:
+        with open(CsvRepository.csv_filename, mode="r") as file:
             reader = csv.DictReader(
                 file,
                 fieldnames=["id", "title", "description", "completed", "due_date"],
@@ -30,9 +55,9 @@ class CsvRepository:
                 tasks.append(Task(**row))
         return tasks
 
-    def update_task(self, task_to_update: Task, csv_filename: str):
-        tasks = self.read_tasks(csv_filename)
-        with open(csv_filename, mode="w", newline="") as file:
+    def update_task(self, task_to_update: Task):
+        tasks = self.read_tasks()
+        with open(CsvRepository.csv_filename, mode="w", newline="") as file:
             writer = csv.DictWriter(
                 file, fieldnames=["id", "title", "description", "completed", "due_date"]
             )
@@ -58,3 +83,32 @@ class CsvRepository:
                             task.due_date,
                         ]
                     )
+
+    def delete_task(self, id: str):
+        # read each of the rows and map them to a Task object
+        tasks: list[Task] = []
+        with open(CsvRepository.csv_filename, mode="r") as file:
+            # no header row
+            reader = csv.DictReader(
+                file, fieldnames=["id", "title", "description", "completed", "due_date"]
+            )
+            for row in reader:
+                to_delete = Task(**row).id == id
+                if to_delete is False:
+                    tasks.append(Task(**row))
+        # delete the task from the list
+        with open(CsvRepository.csv_filename, mode="w", newline="") as file:
+            writer = csv.DictWriter(
+                file, fieldnames=["id", "title", "description", "completed", "due_date"]
+            )
+            writer = csv.writer(file)
+            for task in tasks:
+                writer.writerow(
+                    [
+                        task.id,
+                        task.title,
+                        task.description,
+                        task.completed,
+                        task.due_date,
+                    ]
+                )

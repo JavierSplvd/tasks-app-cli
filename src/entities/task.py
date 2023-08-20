@@ -7,13 +7,13 @@ class Task:
         id: str | None,
         title: str,
         description: str,
-        completed: bool,
+        completed: str,
         due_date: str,
     ):
         self.id = id if id is not None else str(uuid.uuid4())
         self.title = title
         self.description = description
-        self.completed = completed
+        self.completed = completed == "True"
         self.due_date = due_date
 
     def __str__(self):
