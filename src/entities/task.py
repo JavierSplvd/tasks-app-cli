@@ -17,7 +17,7 @@ class Task:
         self.due_date = due_date
 
     def __str__(self):
-        return f"| {self.id} | {trim_string(self.title, 12)} | {trim_string(self.description, 20)} | {'Completed' if self.completed else 'To do    '} | {self.due_date} |"
+        return f"| {trim_string(self.id, 36)} | {trim_string(self.title, 12)} | {trim_string(self.description, 20)} | {'Completed' if self.completed else 'To do    '} | {self.due_date} |"
 
     def get_task_details(self):
         return {
