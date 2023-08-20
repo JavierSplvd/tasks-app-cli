@@ -17,6 +17,10 @@ class test_delete_task(unittest.TestCase):
         for task in self.task_data:
             CsvRepository.get_instance().create_task(task)
 
+    def setUpClass():
+        if os.path.exists(CsvRepository.csv_filename):
+            os.remove(CsvRepository.csv_filename)
+
     def tearDown(self):
         os.remove(CsvRepository.csv_filename)
 

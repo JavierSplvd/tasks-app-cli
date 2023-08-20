@@ -12,9 +12,8 @@ class CsvRepository:
         if CsvRepository.__instance is None:
             CsvRepository.__instance = CsvRepository()
             try:
-                with open(CsvRepository.csv_filename, mode="w", newline="") as file:
+                with open(CsvRepository.csv_filename, mode="a", newline="") as file:
                     csv.writer(file)
-                    print("CSV created!")
             except Exception as e:
                 print(f"An error occurred while creating the CSV: {str(e)}")
         return CsvRepository.__instance

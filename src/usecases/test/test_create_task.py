@@ -14,6 +14,10 @@ class test_create_task(unittest.TestCase):
             Task(None, "Task 3", "Description 3", True, "2021-01-03"),
         ]
 
+    def setUpClass():
+        if os.path.exists(CsvRepository.csv_filename):
+            os.remove(CsvRepository.csv_filename)
+
     def tearDown(self):
         os.remove(CsvRepository.csv_filename)
 
