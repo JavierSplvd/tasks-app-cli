@@ -1,12 +1,23 @@
+import uuid
+
+
 class Task:
-    def __init__(self, title: str, description: str, completed: bool, due_date: str):
+    def __init__(
+        self,
+        id: str | None,
+        title: str,
+        description: str,
+        completed: bool,
+        due_date: str,
+    ):
+        self.id = id if id is not None else str(uuid.uuid4())
         self.title = title
         self.description = description
         self.completed = completed
         self.due_date = due_date
 
     def __str__(self):
-        return f"| {trim_string(self.title, 12)} | {trim_string(self.description, 20)} | {'Completed' if self.completed else 'To do    '} | {self.due_date} |"
+        return f"| {self.id} | {trim_string(self.title, 12)} | {trim_string(self.description, 20)} | {'Completed' if self.completed else 'To do    '} | {self.due_date} |"
 
     def get_task_details(self):
         return {
