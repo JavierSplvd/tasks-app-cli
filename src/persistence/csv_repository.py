@@ -6,7 +6,6 @@ from entities.task import Task
 # This class uses the Singleton pattern.
 class CsvRepository:
     __instance = None
-    # save in the HOME directory
     home = os.path.expanduser("~")
     csv_filename: str = home + "/task-manager.csv"
 
@@ -52,7 +51,7 @@ class CsvRepository:
                 tasks.append(Task(**row))
         return tasks
 
-    def update_task(self, task_to_update: Task):
+    def update_task(self, task_to_update: Task) -> None:
         tasks = self.read_tasks()
         with open(CsvRepository.csv_filename, mode="w", newline="") as file:
             writer = csv.DictWriter(

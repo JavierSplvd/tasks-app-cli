@@ -38,16 +38,10 @@ python .\run_tests.py
 python .\src\task-manager.py --help
 ```
 
-# Improvements
+# Future improvements
 
 1. Repository Factory that serves different repositories implementations depending on the some configuration (for example csv, json, sql-lite, API rest).
 2. Distribute the application as a package to be installed with pip.
 3. CI pipeline to run tests and check coverage.
 4. Input validation when creating and updating tasks.
 5. makefile to install dependencies and run tests.
-
-# TODO
-
---------
-refactor repository
-more documentation for the cli commands

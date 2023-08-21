@@ -9,7 +9,20 @@ from usecases.update_task import update_task
 
 @click.group()
 def cli():
-    """This CLI is a simple task manager. The items are stored in a CSV file on the current directory. A list of commands is available below.
+    """This CLI is a simple task manager. The items are stored in a CSV file on the HOME directory. A list of commands is available below.
+
+    \b
+    The task has the following attributes:
+    \b
+    - Id is a UUID that is automatically generated.
+    \b
+    - Title is a string.
+    \b
+    - Description is a string.
+    \b
+    - Completed is a boolean. It is represented as the string "Completed" or "To do".
+    \b
+    - Due date is a string in the format YYYY-MM-DD. The date is not validated.
 
     \b
     List tasks:
@@ -32,6 +45,12 @@ def cli():
 
 @click.command()
 def ls():
+    """List tasks
+
+    \b
+    Example:
+    task-manager.py ls
+    """
     click.echo("List tasks")
     tasks = read_tasks()
     [click.echo(task) for task in tasks]
@@ -42,6 +61,20 @@ def ls():
 @click.argument("description")
 @click.argument("due_date")
 def add(title, description, due_date):
+    """Add task
+
+    \b
+    The id is automatically generated.
+
+    \b
+    title: string
+    description: string
+    due_date: string
+
+    \b
+    Example:
+    task-manager.py add "title" "description" "1999-12-31"
+    """
     click.echo("Add task")
     task = create_task(Task(None, title, description, False, due_date))
     click.echo(task)
@@ -54,13 +87,36 @@ def add(title, description, due_date):
 @click.argument("completed")
 @click.argument("due_date")
 def update(id, title, description, completed, due_date):
+    """Update task
+
+    \b
+    id: string
+    title: string
+    description: string
+    completed: string
+    due_date: string
+
+    \b
+    Example:
+    task-manager.py update "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd" "TTT" "DDD" "True" "1999-12-31"
+    """
     click.echo("Update task")
     task = update_task(Task(id, title, description, completed, due_date))
     click.echo(task)
 
+
 @cli.command()
 @click.argument("id")
 def delete(id):
+    """Delete task
+
+    \b
+    id: string
+
+    \b
+    Example:
+    task-manager.py delete "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd"
+    """
     click.echo("Delete task")
     delete_task(id)
 
