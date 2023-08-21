@@ -40,7 +40,8 @@ pip install -r requirements.txt
 To run the tests and the application use the following commands:
 
 ```
-python .\run_tests.py
+$Env:PYTHONPATH="./src";python -m unittest discover
+$Env:PYTHONPATH="./src";coverage run -m unittest discover
 python .\src\task_manager.py --help
 ```
 
