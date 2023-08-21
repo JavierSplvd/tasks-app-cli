@@ -36,5 +36,5 @@ class test_update_task(unittest.TestCase):
     def test_given_wrong_id_should_raise_exception(self):
         with self.assertRaises(Exception) as context:
             update_task(Task("wrong", "Task 100", "Description 100", False, "2030-01-01"))
-            self.assertTrue("Task does not exist!" in str(context.exception))
+        self.assertTrue("Task does not exist!" in str(context.exception))
         

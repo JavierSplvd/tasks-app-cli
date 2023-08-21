@@ -24,6 +24,11 @@ class test_delete_task(unittest.TestCase):
     def tearDown(self):
         os.remove(CsvRepository.csv_filename)
 
-    def test_delete_task_from_csv(self):
+    def test_delete_task_success(self):
         delete_task("1")
         self.assertEqual(len(CsvRepository.get_instance().read_tasks()), 2)
+
+    def test_given_wrong_id_should_raise_exception(self):
+        with self.assertRaises(Exception) as context:
+            delete_task("wrong")
+        self.assertTrue("Task does not exist!" in str(context.exception))
