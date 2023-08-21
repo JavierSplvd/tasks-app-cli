@@ -21,7 +21,7 @@ class test_create_task(unittest.TestCase):
     def tearDown(self):
         os.remove(CsvRepository.csv_filename)
 
-    def test_save_task_to_csv(self):
+    def test_save_task_success(self):
         for task in self.task_data:
             create_task(task)
 
