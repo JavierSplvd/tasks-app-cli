@@ -25,7 +25,7 @@ jobs:
 
       - name: Set PYTHONPATH to /src
         run: |
-          export PYTHONPATH=$PYTHONPATH:/src
+          export PYTHONPATH=$PYTHONPATH:./src
 
       - name: Run tests and generate coverage report
         run: |
