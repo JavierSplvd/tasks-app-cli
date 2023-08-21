@@ -30,10 +30,16 @@ The Task Manager CLI helps the user in the following ways:
 
 # Getting started
 
-Using Powershell on the root folder install the dependencies and run the tests.
+After cloning the repository, create a virtual environment and install the dependencies using the following commands (PowerShell):
 
 ```
 .venv\scripts\activate
+pip install -r requirements.txt
+```
+
+To run the tests and the application use the following commands:
+
+```
 python .\run_tests.py
 python .\src\task-manager.py --help
 ```
