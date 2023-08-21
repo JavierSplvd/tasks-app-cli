@@ -71,17 +71,10 @@ class CsvRepository:
                         ]
                     )
                 else:
-                    writer.writerow(
-                        [
-                            task.id,
-                            task.title,
-                            task.description,
-                            task.completed,
-                            task.due_date,
-                        ]
-                    )
+                    writer.writerow(task.to_dict())
 
     def delete_task(self, id: str):
+        # O(n) time complexity
         output_file_path: str = CsvRepository.csv_filename + "_"
         with open(output_file_path, mode="w") as output_file:
             with open(CsvRepository.csv_filename, mode="r") as original_file:

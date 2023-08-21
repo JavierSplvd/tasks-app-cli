@@ -19,8 +19,9 @@ class Task:
     def __str__(self):
         return f"| {trim_string(self.id, 36)} | {trim_string(self.title, 12)} | {trim_string(self.description, 20)} | {'Completed' if self.completed else 'To do    '} | {trim_string(self.due_date, 10)} |"
 
-    def get_task_details(self):
+    def to_dict(self):
         return {
+            "id": self.id,
             "title": self.title,
             "description": self.description,
             "completed": self.completed,
