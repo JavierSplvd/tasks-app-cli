@@ -1,11 +1,14 @@
 import csv
+import os
 from entities.task import Task
 
 
 # This class uses the Singleton pattern.
 class CsvRepository:
     __instance = None
-    csv_filename: str = "tasks.csv"
+    # save in the HOME directory
+    home = os.path.expanduser("~")
+    csv_filename: str = home + "/task-manager.csv"
 
     @staticmethod
     def get_instance():

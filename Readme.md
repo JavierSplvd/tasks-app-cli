@@ -2,7 +2,7 @@
 
 This is my solution to the task manager CLI test case.
 
-I have used the combination of python+click to create a simple CLI application. Python is a language that let you prototype fast and click is a module that let you create CLI applications with a few lines of code (check the task-manager.py file).
+I have used the combination of python+click to create a simple CLI application. Python is a language that let you prototype fast, has a wide variety of packages and big community. Click is a module that let you create CLI applications with a few lines of code (check the task-manager.py file) as it has a good default configuration that you can override if needed.
 
 I have separated the code in three folders:
 
@@ -30,11 +30,12 @@ The Task Manager CLI helps the user in the following ways:
 
 # Getting started
 
-Using Powershell on the root folder:
+Using Powershell on the root folder install the dependencies and run the tests.
 
 ```
 .venv\scripts\activate
 python .\run_tests.py
+python .\src\task-manager.py --help
 ```
 
 # Improvements
@@ -43,12 +44,10 @@ python .\run_tests.py
 2. Distribute the application as a package to be installed with pip.
 3. CI pipeline to run tests and check coverage.
 4. Input validation when creating and updating tasks.
+5. makefile to install dependencies and run tests.
 
 # TODO
 
 --------
 refactor repository
 more documentation for the cli commands
-makefile to install to path
-examples on the readme
-steps to install and run some ls
