@@ -1,5 +1,7 @@
 # Task Manager
 
+[![codecov](https://codecov.io/gh/JavierSplvd/tasks-app-cli/graph/badge.svg?token=V3CCIB5V3Z)](https://codecov.io/gh/JavierSplvd/tasks-app-cli)
+
 This is my solution to the task manager CLI test case.
 
 I have used the combination of python+click to create a simple CLI application. Python is a language that let you prototype fast, has a wide variety of packages and big community. Click is a module that let you create CLI applications with a few lines of code (check the task_manager.py file) as it has a good default configuration that you can override if needed.
