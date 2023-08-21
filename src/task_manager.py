@@ -26,19 +26,19 @@ def cli():
 
     \b
     List tasks:
-    task-manager.py ls
+    task_manager.py ls
 
     \b
     Add task:
-    task-manager.py add "title" "description" "1999-12-31"
+    task_manager.py add "title" "description" "1999-12-31"
 
     \b
     Update task:
-    task-manager.py update "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd" "TTT" "DDD" "True" "1999-12-31"
+    task_manager.py update "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd" "TTT" "DDD" "True" "1999-12-31"
 
     \b
     Delete task:
-    task-manager.py delete "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd"
+    task_manager.py delete "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd"
     """
     pass
 
@@ -49,7 +49,7 @@ def ls():
 
     \b
     Example:
-    task-manager.py ls
+    task_manager.py ls
     """
     click.echo("List tasks")
     tasks = read_tasks()
@@ -73,7 +73,7 @@ def add(title, description, due_date):
 
     \b
     Example:
-    task-manager.py add "title" "description" "1999-12-31"
+    task_manager.py add "title" "description" "1999-12-31"
     """
     click.echo("Add task")
     task = create_task(Task(None, title, description, False, due_date))
@@ -98,7 +98,7 @@ def update(id, title, description, completed, due_date):
 
     \b
     Example:
-    task-manager.py update "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd" "TTT" "DDD" "True" "1999-12-31"
+    task_manager.py update "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd" "TTT" "DDD" "True" "1999-12-31"
     """
     click.echo("Update task")
     task = update_task(Task(id, title, description, completed, due_date))
@@ -115,7 +115,7 @@ def delete(id):
 
     \b
     Example:
-    task-manager.py delete "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd"
+    task_manager.py delete "1ec475e3-9ee8-4e50-b7ae-45aeb624e1fd"
     """
     click.echo("Delete task")
     delete_task(id)

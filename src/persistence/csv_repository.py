@@ -7,7 +7,7 @@ from entities.task import Task
 class CsvRepository:
     __instance = None
     home = os.path.expanduser("~")
-    csv_filename: str = home + "/task-manager.csv"
+    csv_filename: str = home + "/task_manager.csv"
 
     @staticmethod
     def get_instance():

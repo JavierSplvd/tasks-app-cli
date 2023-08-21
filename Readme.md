@@ -2,7 +2,7 @@
 
 This is my solution to the task manager CLI test case.
 
-I have used the combination of python+click to create a simple CLI application. Python is a language that let you prototype fast, has a wide variety of packages and big community. Click is a module that let you create CLI applications with a few lines of code (check the task-manager.py file) as it has a good default configuration that you can override if needed.
+I have used the combination of python+click to create a simple CLI application. Python is a language that let you prototype fast, has a wide variety of packages and big community. Click is a module that let you create CLI applications with a few lines of code (check the task_manager.py file) as it has a good default configuration that you can override if needed.
 
 I have separated the code in three folders:
 
@@ -41,7 +41,7 @@ To run the tests and the application use the following commands:
 
 ```
 python .\run_tests.py
-python .\src\task-manager.py --help
+python .\src\task_manager.py --help
 ```
 
 # Future improvements
