@@ -82,30 +82,14 @@ class CsvRepository:
                     )
 
     def delete_task(self, id: str):
-        # read each of the rows and map them to a Task object
-        tasks: list[Task] = []
-        with open(CsvRepository.csv_filename, mode="r") as file:
-            # no header row
-            reader = csv.DictReader(
-                file, fieldnames=["id", "title", "description", "completed", "due_date"]
-            )
-            for row in reader:
-                to_delete = Task(**row).id == id
-                if to_delete is False:
-                    tasks.append(Task(**row))
-        # delete the task from the list
-        with open(CsvRepository.csv_filename, mode="w", newline="") as file:
-            writer = csv.DictWriter(
-                file, fieldnames=["id", "title", "description", "completed", "due_date"]
-            )
-            writer = csv.writer(file)
-            for task in tasks:
-                writer.writerow(
-                    [
-                        task.id,
-                        task.title,
-                        task.description,
-                        task.completed,
-                        task.due_date,
-                    ]
-                )
+        output_file_path: str = CsvRepository.csv_filename + "_"
+        with open(output_file_path, mode="w") as output_file:
+            with open(CsvRepository.csv_filename, mode="r") as original_file:
+                reader = csv.reader(original_file)
+                for row in reader:
+                    to_delete = row[0] == id
+                    if to_delete is False:
+                        # join list with commas and add newline
+                        output_file.write(",".join(row) + "\n")
+        os.remove(CsvRepository.csv_filename)
+        os.rename(output_file_path, CsvRepository.csv_filename)
