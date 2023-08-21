@@ -28,6 +28,8 @@ MANIFEST
 # dotenv
 .env
 
+.coverage
+
 # virtualenv
 venv/
 ENV/
